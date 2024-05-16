@@ -1,5 +1,13 @@
 <h3>HOME LANDING</h3>
-<p id="list"></p>
-
-<script src="/socket.io/socket.io.js" charset="utf-8"></script>
-<script src="/js/index.js" charset="utf-8"></script>
+<h4>LISTA DE PRODUCTOS HTTP</h4>
+{{#each allProducts }}
+<ul>
+    <li>ID: {{this.id}}</li>
+    <li>Title: {{this.title}}</li>
+    <li>Description: {{this.description}}</li>
+    <li>Precio: {{this.price}}</li>
+    <li>Image: {{this.thumbnail}}</li>
+    <li>Code: {{this.code}}</li>
+    <li>Stock: {{this.stock}}</li>
+</ul>
+{{/each }}
