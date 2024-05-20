@@ -29,5 +29,15 @@ const socketServer = new Server(httpServer);
 
 socketServer.on('connection', async (socket) => {
     console.log('🟢 ¡New connection!', socket.id);
+    
     socketServer.emit('products', await productManager.getProducts());
+    
+    socket.on('addProductSocket', async (prod) => {
+        socketServer.emit('addProductSocket', await productManager.addProduct(prod));
+        socketServer.emit('products', await productManager.getProducts());
+    })
+    socket.on('deleteProductSocket', async (prod) => {
+        socketServer.emit('deleteProductSocket', await productManager.deleteProduct(prod));
+        socketServer.emit('products', await productManager.getProducts());
+    })
 });
